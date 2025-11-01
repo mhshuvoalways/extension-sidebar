@@ -30,9 +30,13 @@ export default defineContentScript({
 });
 
 const FloatingButton: React.FC = () => {
-  const handleClick = async () => {
+  const handleClick = () => {
     try {
-      await chrome.sidePanel.open({ windowId: chrome.windows.WINDOW_ID_CURRENT });
+      chrome.runtime.sendMessage({ type: "OPEN_SIDE_PANEL" }, (response) => {
+        if (!response) {
+          console.error("Error opening side panel: No response from background");
+        }
+      });
     } catch (error) {
       console.error("Error opening side panel:", error);
     }
